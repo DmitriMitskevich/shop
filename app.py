@@ -25,6 +25,15 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/cart/<int:id>')
+def cart(id):
+    item = Item.query.get(id)
+    return render_template('cart.html', data=item)
+
+@app.route('/checkout_url')
+def checkout_url():
+    return render_template('checkout_url.html')
+
 @app.route('/buy/<int:id>')
 def item_buy(id):
     item = Item.query.get(id)
@@ -35,7 +44,7 @@ def item_buy(id):
         "currency": "BYN",
         "amount": str(item.price) + "00"
     }
-    url = checkout.url(data).get('checkout_url')
+    url = checkout.url(data).get('checkout')
     return redirect(url)
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -55,8 +64,10 @@ def create():
     else:
         return render_template('create.html')
 
+
+
 with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

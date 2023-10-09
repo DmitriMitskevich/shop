@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оплата</title>
+</head>
+<body>
+    <h1>Оформление оплаты</h1>
+
+    <form action="/buy" method="POST" >
+        <label for="amount">Сумма заказа: </label>
+        <input type="text" id="amount" name="amount" required>
+        <br><br>
+
+        <label for="card_name">Имя на карте:</label>
+        <input type="text" id="card_name" name="card_name" required>
+        <br><br>
+
+        <label for="card_number">Номер карты:</label>
+        <input type="text" id="card_number" name="card_number" required>
+        <br><br>
+
+        <label for="expiry_date">Срок действия:</label>
+        <input type="text" id="expiry_date" name="expiry_date" required>
+        <br><br>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+        <br><br>
+
+        <button type="submit">Оплатить</button>
+    </form>
+</body>
+</html>
